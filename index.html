@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SkyFast — Airline Booking</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <span class="logo">✈️</span>
+      <h1>SkyFast</h1>
+    </div>
+    <nav class="nav">
+      <button class="tab-btn" data-tab="home">Home</button>
+      <button class="tab-btn" data-tab="popular">Popular flights</button>
+      <button class="tab-btn" data-tab="booking">Booking</button>
+      <button class="tab-btn" data-tab="passenger">Passenger</button>
+      <button class="tab-btn" data-tab="payment">Payment</button>
+      <button class="tab-btn" data-tab="about">About</button>
+      <button class="tab-btn" data-tab="contact">Contact</button>
+    </nav>
+    <div class="auth">
+      <div id="authStatus" class="badge">Guest</div>
+      <button id="loginBtn" class="btn primary">Login</button>
+      <button id="logoutBtn" class="btn ghost" hidden>Logout</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Home -->
+    <section id="home" class="tab active">
+      <div class="hero">
+        <h2>Fly smarter. Book faster.</h2>
+        <p>login befor booking</p>
+        <div class="cta">
+          <button class="btn primary" data-tab="booking">Start booking</button>
+          <button class="btn ghost" data-tab="popular">View popular flights</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular flights -->
+    <section id="popular" class="tab">
+      <h2>Popular flights</h2>
+      <div id="popularList" class="cards"></div>
+    </section>
+
+    <!-- Booking -->
+    <section id="booking" class="tab">
+      <h2>Book your flight</h2>
+      <div class="grid two">
+        <div class="card">
+          <h3>Search flights</h3>
+          <form id="searchForm" class="form">
+            <div class="field">
+              <label for="fromCountry">From</label>
+              <select id="fromCountry" required></select>
+            </div>
+            <div class="field">
+              <label for="toCountry">To</label>
+              <select id="toCountry" required></select>
+            </div>
+            <div class="field">
+              <label for="travelDate">Date</label>
+              <input type="date" id="travelDate" required />
+            </div>
+            <div class="field">
+              <label for="classType">Class</label>
+              <select id="classType" required>
+                <option value="economy">Economy</option>
+                <option value="business">Business</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="passengers">Passengers</label>
+              <input type="number" id="passengers" min="1" max="6" value="1" required />
+            </div>
+            <button type="submit" class="btn primary">Search</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>Available flights</h3>
+          <div id="availableFlights" class="list"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Select seats</h3>
+        <p class="muted">Choose seats according to your requirement. Business seats are highlighted.</p>
+        <div id="seatMap" class="seats"></div>
+        <div class="seat-actions">
+          <button id="autoAssignSeats" class="btn ghost">Auto-assign</button>
+          <button id="clearSeats" class="btn ghost">Clear selection</button>
+        </div>
+      </div>
+
+      <div class="notice" id="loginNotice">You must be logged in to continue to Passenger details.</div>
+      <div class="actions">
+        <button class="btn primary" id="toPassenger">Continue</button>
+      </div>
+    </section>
+
+    <!-- Passenger -->
+    <section id="passenger" class="tab">
+      <h2>Passenger details</h2>
+      <form id="passengerForm" class="form">
+        <div class="grid two">
+          <div class="field">
+            <label for="fullName">Full name</label>
+            <input type="text" id="fullName" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" required />
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" required />
+          </div>
+          <div class="field">
+            <label for="passport">Passport number</label>
+            <input type="text" id="passport" required />
+          </div>
+        </div>
+        <div class="actions">
+          <button type="submit" class="btn primary">Save passenger</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Payment -->
+    <section id="payment" class="tab">
+      <h2>Payment</h2>
+      <div class="grid two">
+        <div class="card">
+          <h3>Payment method</h3>
+          <form id="paymentForm" class="form">
+            <div class="field">
+              <label for="cardNumber">Card number</label>
+              <input type="text" id="cardNumber" placeholder="4111 1111 1111 1111" required />
+            </div>
+            <div class="field-inline">
+              <div class="field">
+                <label for="expiry">Expiry</label>
+                <input type="text" id="expiry" placeholder="MM/YY" required />
+              </div>
+              <div class="field">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" placeholder="123" required />
+              </div>
+            </div>
+            <button type="submit" class="btn primary">Pay now</button>
+          </form>
+        </div>
+      </div>
+      <div id="paymentStatus" class="status"></div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="tab">
+      <h2>About SkyFast</h2>
+      <p>SkyFast is a demo airline booking experience built with HTML, CSS, and JavaScript. It showcases end-to-end flow from flight search to payment with clean UI and simple validation.</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="tab">
+      <h2>Contact us</h2>
+      <form id="contactForm" class="form">
+        <div class="field">
+          <label for="contactName">Name</label>
+          <input type="text" id="contactName" required />
+        </div>
+        <div class="field">
+          <label for="contactEmail">Email</label>
+          <input type="email" id="contactEmail" required />
+        </div>
+        <div class="field">
+          <label for="contactMessage">Message</label>
+          <textarea id="contactMessage" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn primary">Send</button>
+      </form>
+      <div id="contactStatus" class="status"></div>
+    </section>
+  </main>
+
+  <!-- Login modal -->
+  <dialog id="loginModal" class="modal">
+    <form method="dialog" id="loginForm" class="form">
+      <h3>Login</h3>
+      <div class="field">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" required />
+      </div>
+      <div class="field">
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" required />
+      </div>
+      <div class="actions">
+        <button type="submit" class="btn primary">Login</button>
+        <button id="closeLogin" class="btn ghost">Cancel</button>
+      </div>
+    </form>
+  </dialog>
+
+  <footer class="footer">
+    <p>© SkyFast Demo</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
