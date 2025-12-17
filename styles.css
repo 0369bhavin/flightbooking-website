@@ -1,0 +1,360 @@
+/* ================= RESET ================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ================= VARIABLES ================= */
+:root {
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --hero-start: #0f172a;
+  --hero-end: #1e3a8a;
+  --accent: #16a34a;
+  --warning: #dc2626;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --radius: 14px;
+  --shadow: 0 12px 28px rgba(0,0,0,0.08);
+  --transition: all 0.3s ease;
+}
+
+/* ================= BASE ================= */
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ================= HEADER ================= */
+.header {
+  background: var(--card);
+  box-shadow: var(--shadow);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo {
+  font-size: 1.8rem;
+}
+
+/* ================= NAVBAR ================= */
+.nav {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+
+.nav::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: var(--text);
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.tab-btn:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* ================= AUTH ================= */
+.auth {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-left: auto;
+}
+
+.badge {
+  background: var(--border);
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+
+/* ================= BUTTONS ================= */
+.btn {
+  padding: 0.65rem 1.3rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.btn.primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.btn.ghost:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* ================= HERO ================= */
+.hero {
+  background: linear-gradient(135deg, var(--hero-start), var(--hero-end));
+  color: #ffffff;
+  padding: 3.5rem 2rem;
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 2.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.hero p {
+  opacity: 0.85;
+}
+
+.cta {
+  margin-top: 1.8rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero .btn.ghost {
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+
+.hero .btn.ghost:hover {
+  background: #ffffff;
+  color: var(--hero-end);
+}
+
+/* ================= LAYOUT ================= */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1.5rem;
+}
+
+.tab {
+  display: none;
+}
+
+.tab.active {
+  display: block;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.grid.two {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* ================= CARDS ================= */
+.card {
+  background: var(--card);
+  padding: 1.6rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.cards {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.flight-card {
+  background: var(--card);
+  padding: 1.2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.flight-card:hover {
+  transform: translateY(-4px);
+}
+
+/* ================= FORMS ================= */
+.form {
+  display: grid;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.field-inline {
+  display: flex;
+  gap: 1rem;
+}
+
+label {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+input,
+select,
+textarea {
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(37,99,235,0.15);
+}
+
+/* ================= SEATS ================= */
+.seats {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.seat {
+  padding: 0.55rem;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  background: var(--border);
+  transition: var(--transition);
+}
+
+.seat.economy {
+  background: #e0f2fe;
+}
+
+.seat.business {
+  background: #fde68a;
+}
+
+.seat.selected {
+  background: var(--accent);
+  color: #fff;
+}
+
+.seat.disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.seat:hover:not(.disabled) {
+  transform: scale(1.05);
+}
+
+/* ================= NOTICE & STATUS ================= */
+.notice,
+.status {
+  margin-top: 1rem;
+  padding: 0.9rem;
+  border-radius: 8px;
+  background: #eef2ff;
+  color: var(--primary-dark);
+  font-size: 0.9rem;
+}
+
+/* ================= MODAL ================= */
+.modal {
+  border: none;
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  max-width: 380px;
+  width: 100%;
+  box-shadow: var(--shadow);
+}
+
+.modal::backdrop {
+  background: rgba(0,0,0,0.4);
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav {
+    justify-content: flex-start;
+  }
+
+  .hero h2 {
+    font-size: 1.8rem;
+  }
+
+  .field-inline {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .seats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
